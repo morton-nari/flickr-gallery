@@ -27,7 +27,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+             
+            ]
           },
           "configurations": {
             "production": {
@@ -86,7 +88,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/api"
             ],
             "styles": [
               "src/styles.css"
@@ -124,6 +127,6 @@
   },
   "defaultProject": "flickr-gallery",
   "cli": {
-    "analytics": "a7231a36-3443-4227-8b3f-aa7819302228"
+    "analytics": "d0ebe428-57c7-4999-9067-b935497bd7b9"
   }
 }
