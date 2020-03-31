@@ -4,5 +4,5 @@ export interface Photos {
     pages?: number;
     perpag?: number;
     total?: number;
-    photo?: Photo;
+    photo?: Photo[];
 }

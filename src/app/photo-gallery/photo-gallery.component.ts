@@ -13,8 +13,8 @@ export class PhotoGalleryComponent implements OnInit {
   constructor(private flickrService: FlikrService) { }
   ngOnInit(): void {
     this.flickrService.getPhotos().subscribe({
-      // next: flickrResponse => this.flickrResponse = flickrResponse,
-       next: flickrResponse => console.log(flickrResponse),
+      next: flickrResponse => this.flickrResponse = flickrResponse,
+      //  next: flickrResponse => console.log(flickrResponse),
       error: err => this.errorMessage = err,
     });
   }
