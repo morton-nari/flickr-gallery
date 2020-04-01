@@ -10,7 +10,7 @@ import { Photo } from '../models/Photo';
 })
 export class FlikrService {
   // tslint:disable-next-line:max-line-length
-  private imagesUrl = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=708e061b07ea822dc935622973482b72&lat=-25.734968&lon=134.489563&format=json&nojsoncallback=1&auth_token=72157713695814443-60ca5e2bc02dab80&api_sig=ef937269cb5f76a63c854a1157b8aba6';
+  private imagesUrl = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=655116321eac43ba06a392fe3fe2e511&lat=-25.734968&lon=134.489563&format=json&nojsoncallback=1';
   // flickerUrl = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1';
   constructor(private http: HttpClient) { }
   getPhotos(): Observable<Photos[]> {
