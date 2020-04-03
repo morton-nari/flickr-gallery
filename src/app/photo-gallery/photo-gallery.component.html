@@ -1,8 +1,24 @@
-<h1>ssss</h1>
+<h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Thumbnail Gallery</h1>
+    <hr class="mt-2 mb-5">
+<div class="card-columns">
+    <div class="card" *ngFor="let pics of flickrResponse?.photos?.photo | paginate:{itemsPerPage: 10, currentPage:p} let i = index; " >
+      <img class="card-img-top" src="https://farm{{pics.farm}}.staticflickr.com/{{pics.id}}/{{pics.id}}_{{pics.secret}}_m.jpg" [alt]="pics.title" />
+      <div class="card-body">
+        <h5 class="card-title">{{ pics.title ? pics.title : "Unknown picture"  }}</h5>
+        <p class="card-text">{{ pics.title }}</p>
+        <hr>
 
-<div >
-    <ul *ngFor="let pics of flickrResponse ">
-        <li></li>
-    </ul>
-    <p> </p>
-</div>
+        
+        <p class="card-text">
+           <input title="add to favorite" id="fav-{{i}}" type="checkbox" />
+          <label for="fav-{{i}}"></label>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex d-flex justify-content-center" id="pagination">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </div>    		
+    
+  
+     

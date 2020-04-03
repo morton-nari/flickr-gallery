@@ -8,4 +8,6 @@ export interface Photo {
     ispublic?: any;
     isfriend?: any;
     isfamily?: any;
+    isSelected: boolean;
 }
+
