@@ -9,7 +9,7 @@ import { ApiResponse } from '../models/ApiResponse';
 })
 export class FlikrService {
   // tslint:disable-next-line:max-line-length
-  private imagesUrl = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=9d917c77afdd07ec80e68a6f8758abbc&contacts=&lat=-25.734968&lon=134.489563&format=json&nojsoncallback=1&api_sig=b001bbcf4f6b1116f0c025e76fe92a3e';
+  private imagesUrl = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=9a7404d4afa9adac1bff5c72fae1f226&lat=-25.734968&lon=134.489563&format=json&nojsoncallback=1';
   // flickerUrl = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1';
   constructor(private http: HttpClient) { }
   getPhotos(): Observable<ApiResponse> {

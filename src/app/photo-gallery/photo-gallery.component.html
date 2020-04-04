@@ -10,7 +10,7 @@
 
         
         <p class="card-text">
-           <input title="add to favorite" id="fav-{{i}}" type="checkbox" />
+           <input title="add to favorite" id="fav-{{i}}" type="checkbox"[checked]= "pics.isSelected" (change)="store($event.target.checked, pics.id)" />
           <label for="fav-{{i}}"></label>
         </p>
       </div>
