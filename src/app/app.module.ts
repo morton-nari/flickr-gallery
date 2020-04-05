@@ -5,18 +5,22 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
+import { FavComponent } from './fav/fav.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhotoGalleryComponent
+    PhotoGalleryComponent,
+    FavComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

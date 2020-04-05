@@ -1,4 +1,5 @@
-<h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Thumbnail Gallery</h1>
+<app-search></app-search>
+<h1 class="font-weight-light text-center text-lg-left mt-4 mb-0" >sydney</h1>
     <hr class="mt-2 mb-5">
 <div class="card-columns">
     <div class="card" *ngFor="let pics of flickrResponse?.photos?.photo | paginate:{itemsPerPage: 10, currentPage:p} let i = index; " >
@@ -7,8 +8,6 @@
         <h5 class="card-title">{{ pics.title ? pics.title : "Unknown picture"  }}</h5>
         <p class="card-text">{{ pics.title }}</p>
         <hr>
-
-        
         <p class="card-text">
            <input title="add to favorite" id="fav-{{i}}" type="checkbox"[checked]= "pics.isSelected" (change)="store($event.target.checked, pics.id)" />
           <label for="fav-{{i}}"></label>
@@ -17,7 +16,7 @@
     </div>
   </div>
   <div class="d-flex d-flex justify-content-center" id="pagination">
-    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
   </div>    		
     
   

@@ -16,36 +16,12 @@ export class PhotoGalleryComponent implements OnInit {
   flickrResponse: ApiResponse;
   favorites: ApiResponse;
 
-
 private ProChartStorage = {
-
-  getItem(key: string) {
-      return localStorage.getItem(key);
-  },
 
   setItem(key: string, value: string) {
      console.log('prochart setItem');
      localStorage.setItem(key, value);
-  },
-
-  removeItem:  (key: string) => {
-      return localStorage.removeItem(key);
-  },
-
-  clear: () => {
-      const keys = new Array();
-      for (let i = 0, len = localStorage.length; i < len; i++) {
-          const key = localStorage.key(i);
-          if (key.indexOf('prochart') !== -1 || key.indexOf('ProChart') !== -1) {
-              keys.push(key);
-          }
-      }
-      // tslint:disable-next-line:no-shadowed-variable
-      for (let i = 0; i < keys.length; i++) {
-          localStorage.removeItem(keys[i]);
-      }
   }
-
 };
   ngOnInit(): void {
     this.flickrService.getPhotos().subscribe({
@@ -57,30 +33,36 @@ private ProChartStorage = {
   store(isChecked: any, picId) {
     if (isChecked ) {
       console.log(isChecked, picId);
-      let pic = this.flickrResponse.photos.photo.find(obj => {
-        return obj.id === picId;
-        
-      });
-      const stringToStore = JSON.stringify(pic);
-      this.ProChartStorage.setItem('test.local.pic', stringToStore);
+      // const pic = this.flickrResponse.photos.photo.find(obj => {
+      //   return obj.id === picId;
+      // });
+      // const stringToStore = JSON.stringify(pic);
+      // this.ProChartStorage.setItem('test.local.pic', stringToStore);
 
-      // for (const i in this.flickrResponse.photos.photo) {
-      //   if (this.flickrResponse.photos.photo[i].id === picId) {
-      //     console.log(this.flickrResponse.photos.photo[i]);
-      //     this.flickrResponse.photos.photo.[i].id.push({isSelected: true}); // {a: 5, b: 6};
-      //   }
-      // }
+      for (const i in this.flickrResponse.photos.photo) {
+        if (this.flickrResponse.photos.photo[i].id === picId) {
+          console.log(this.flickrResponse.photos.photo[i]);
+          const favList = this.flickrResponse.photos.photo;
+          favList[i].isSelected = true;
+          const stringToStore = JSON.stringify(favList);
+          this.ProChartStorage.setItem('favList', stringToStore);
+
+          // this.flickrResponse.photos.photo[i].push({isSelected: true}); // {a: 5, b: 6};
+        }
+      }
     } else {
       console.log('removed');
-      // this.favorites = this.favorites;
-      // const stringToStore = JSON.stringify(this.favorites);
-      // this.ProChartStorage.removeItem('test.local.favorites', stringToS);
-    }
+      for (const i in this.flickrResponse.photos.photo) {
+        if (this.flickrResponse.photos.photo[i].id === picId) {
+          console.log(this.flickrResponse.photos.photo[i]);
+          const favList = this.flickrResponse.photos.photo;
+          favList[i].isSelected = false;
+          const stringToStore = JSON.stringify(favList);
+          this.ProChartStorage.setItem('favList', stringToStore);
 
-
-}
-
-
-
-
+          // this.flickrResponse.photos.photo[i].push({isSelected: true}); // {a: 5, b: 6};
+        }
+      }
+      }
+  }
 }
