@@ -13,14 +13,18 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <select class="form-control search-slt mr-3" id="exampleFormControlSelect1">
-          <option>Sydney</option>
-          <option>Perth</option>
-          <option>Brisbane</option>
+        <select class="form-control search-slt mr-3" id="exampleFormControlSelect1"
+        #mySelect
+            (change)="onChange(mySelect.value)"
+        >
+          <option  *ngFor="let city of cities; let i = index;" [value]="[i]"  >{{ city.name }}</option>
       </select> 
-      <span class="text-white mr-3">OR</span>
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      
+        <input class="form-control mr-sm-2" type="text" [value]="latitude" aria-label="Latitude" >
+        <input class="form-control mr-sm-2" type="text" [value]="longitude" placeholder="Longtitude" aria-label="Longtitude">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
+
+  

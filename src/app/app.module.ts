@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -19,6 +20,7 @@ import { SearchComponent } from './search/search.component';
     BrowserModule,
     HttpClientModule,
     NgxPaginationModule,
+    FormsModule
   ],
   providers: [ ],
   bootstrap: [AppComponent]
