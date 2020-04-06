@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination' ;
 import { FlikrService } from '../services/flikr.service';
 import { ApiResponse } from '../models/ApiResponse';
@@ -9,14 +9,16 @@ import { ApiResponse } from '../models/ApiResponse';
   styleUrls: ['./photo-gallery.component.css']
 })
 export class PhotoGalleryComponent implements OnInit {
-
+  curCity = 'Sydney';
+  @Input()
+  latitude: any = '';
+  longitude: any = '';
   constructor(private flickrService: FlikrService) { }
-  p = 1;
+   p = 1;
   errorMessage: string;
   flickrResponse: ApiResponse;
   favorites: ApiResponse;
-
-private ProChartStorage = {
+  private ProChartStorage = {
 
   setItem(key: string, value: string) {
      console.log('prochart setItem');
@@ -32,12 +34,7 @@ private ProChartStorage = {
   }
   store(isChecked: any, picId) {
     if (isChecked ) {
-      console.log(isChecked, picId);
-      // const pic = this.flickrResponse.photos.photo.find(obj => {
-      //   return obj.id === picId;
-      // });
-      // const stringToStore = JSON.stringify(pic);
-      // this.ProChartStorage.setItem('test.local.pic', stringToStore);
+      // console.log(isChecked, picId);
 
       for (const i in this.flickrResponse.photos.photo) {
         if (this.flickrResponse.photos.photo[i].id === picId) {
@@ -54,15 +51,16 @@ private ProChartStorage = {
       console.log('removed');
       for (const i in this.flickrResponse.photos.photo) {
         if (this.flickrResponse.photos.photo[i].id === picId) {
-          console.log(this.flickrResponse.photos.photo[i]);
+          // console.log(this.flickrResponse.photos.photo[i]);
           const favList = this.flickrResponse.photos.photo;
           favList[i].isSelected = false;
           const stringToStore = JSON.stringify(favList);
           this.ProChartStorage.setItem('favList', stringToStore);
-
-          // this.flickrResponse.photos.photo[i].push({isSelected: true}); // {a: 5, b: 6};
         }
       }
       }
+  }
+  latPassed(message: any): void {
+    this.curCity = message;
   }
 }
